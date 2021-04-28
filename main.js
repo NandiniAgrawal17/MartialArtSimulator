@@ -14,7 +14,7 @@ return "/images/idle" + frameNumber + ".png";
 let loadImages = (callback)=>{
     let images = [];
     let imagesToLoad=8;
-[1,2,3,4,5,6,7,8].forEach(frameNumber =>{
+[1,2,3,4,5,6,7,8].forEach((frameNumber) =>{
     let path = imagePath(frameNumber);
 
     loadImage(path,(image)=>{
@@ -27,6 +27,18 @@ let loadImages = (callback)=>{
     });
 });
 };
+
+let animate= (ctx,images,callback) =>{
+    images.forEach((image,index)=>{
+        setTimeout(() =>{
+            ctx.clearRect(0,0,500,500);
+            ctx.drawImage(image, 0, 0,500,500);
+        },index*100);
+    });
+    setTimeout(callback,images.length*100);
+};
 loadImages((images) => {
-    ctx.drawImage(images[3], 0, 0,500,500);
+    animate(ctx,images, ()=>{
+        console.log("Done!");
+    });
 });
