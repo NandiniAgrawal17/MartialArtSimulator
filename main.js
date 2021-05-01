@@ -10,7 +10,10 @@ var loadImage =(src, callback)=>{
 }
 
 var imagePath = (frameno, animation) => {
-    return "/images/" + animation + '/' + frameno + ".png";
+
+    
+    return "https://github.com/NandiniAgrawal17/MartialArtSimulator/blob/master/images/" + animation + "/" + frameno + ".png?raw=true";
+
 }
 
 let frames = { idle:[1,2,3,4,5,6,7,8],
